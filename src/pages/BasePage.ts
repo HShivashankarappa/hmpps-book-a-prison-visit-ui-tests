@@ -15,7 +15,7 @@ export abstract class BasePage {
 
   async checkOnPage(title: string): Promise<void> {
     await this.pageHeader.waitFor()
-    const text = await this.pageHeader.textContent()
+    const text = (await this.pageHeader.textContent()).replace(/\s+/g, ' ').trim()
     expect(text).toBe(title)
   }
 
